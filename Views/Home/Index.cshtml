@@ -1,0 +1,66 @@
+﻿@using Labb2RestaurantMVC.Models.Menu
+﻿@{
+    ViewData["Title"] = "Robins Resturang";
+}
+
+@model List<Menu>
+
+<div class="text-center">
+    <h1 class="display-4 fw-bold">Robins Resturant</h1>
+    <h2 class="display-6 text-muted">Creation in heaven</h2>
+    <div class="row d-flex justify-content-center">
+        @if (ViewBag.ErrorMessage != null)
+        {
+            <div class="alert alert-danger col-lg-6 col-md-8 col-sm-10">
+                @ViewBag.ErrorMessage
+            </div>
+        }
+        <div class="HomePageImage">
+            <figure>
+                <picture>
+                    <source srcset="~/images/nautika_restaurant_800_x600.jpg" type="image/jpeg" />
+                    <img src="~/images/nautika_restaurant_800_x600.jpg"
+                         alt="Restaurant Interior"
+                         class="img-fluid" loading="lazy" />
+                </picture>
+            </figure>
+        </div>
+
+
+        @{
+            var images = new List<string>
+        {
+        "https://images.aws.nestle.recipes/resized/0a0717810b73a1672a029c29788e557b_creamy_alfredo_pasta_long_left_1080_850.jpg",
+        "https://www.foodandwine.com/thmb/3kzG4PWOAgZIIfZwMBLKqoTkaGQ=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/margherita-pizza-with-argula-and-prosciutto-FT-RECIPE0721-04368ec288a84d2e997573aca0001d98.jpg",
+        "https://www.vinochmatguiden.se/bilder/artikel-hog/1790/steak-minute-med-pommes-frites.jpg",
+        "https://img.freepik.com/free-photo/top-view-bowl-jars-with-baby-food_23-2148580418.jpg"
+        };
+            var imageIndex = 0;
+        }
+
+        <div class="row d-flex justify-content-center">
+            @foreach (var food in Model)
+            {
+                
+                var imageUrl = images[imageIndex % images.Count];
+                imageIndex++;
+
+                <div class="card m-3" style="width: 18rem;">
+                    <img src="@imageUrl" class="card-img-top" alt="Food Image">
+                    <div class="card-body">
+                        <h5 class="card-title fw-bold">@food.FoodName</h5>
+                        <p class="card-text">@food.FoodPrice</p>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+    <p class="lead mx-auto" style="max-width: 600px;">
+        <em>
+            Taste With your mind not your mouth
+        </em>
+    </p>
+    <a asp-controller="Menu" asp-action="Index" class="btn btn-outline-warning btn-lg mt-4">View Full Menu</a>
+</div>
