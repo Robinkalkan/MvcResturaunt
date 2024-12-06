@@ -64,7 +64,7 @@
                 if (guestAttending) {
                     // Gör API-anrop för att hämta tillgängliga bord
                     $.ajax({
-                        url: `https://localhost:7003/api/Table/GetAvailableTables/${guestAttending}`,
+                        url: `https://localhost:7073/api/Table/GetAvailableTables/${guestAttending}`,
                         type: 'GET',
                         success: function (data) {
                             console.log('Tables fetched:', data);
@@ -93,7 +93,7 @@
                 if (tableId && bookingDate) {
                     // Gör API-anrop för att hämta bokningar baserat på TableId och datum
                     $.ajax({
-                        url: `https://localhost:7003/api/Booking/GetBookingByTableIdAndDate/${tableId}/${bookingDate}`,
+                        url: `https://localhost:7073/api/Booking/GetBookingByTableIdAndDate/${tableId}/${bookingDate}`,
                         type: 'GET',
                         success: function (data) {
                             console.log('Booking times fetched:', data);

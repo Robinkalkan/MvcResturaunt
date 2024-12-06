@@ -3,19 +3,21 @@
 
 <div class="container text-center menu-page py-5">
 
-    <h1 class="display-4 fw-bold text-uppercase">Welcome to my restaurant where calories don't count!</h1>
-
+    <h1 class="display-4 fw-bold text-uppercase text-primary">Welcome to my restaurant where calories don't count!</h1>
 
     <h2 class="display-6 mb-5 text-muted">An Unusual Experience</h2>
 
-
-    <div class="menu-container mt-4">
+    <div class="row justify-content-center">
         @foreach (var food in Model)
         {
-            <div class="menu-item mb-4">
-                <h5 class="card-title">@food.FoodName</h5>
-                <p class="card-text">@food.FoodInfo</p>
-                <p class="card-text">@food.FoodPrice :-</p>
+            <div class="col-md-4 col-lg-3 mb-4">
+                <div class="menu-item card shadow-sm h-100">
+                    <div class="card-body d-flex flex-column justify-content-between">
+                        <h5 class="card-title text-dark fw-bold">@food.FoodName</h5>
+                        <p class="card-text text-muted">@food.FoodInfo</p>
+                        <p class="card-text text-primary fs-5 fw-bold">@food.FoodPrice :-</p>
+                    </div>
+                </div>
             </div>
         }
     </div>
